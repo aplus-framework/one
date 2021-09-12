@@ -20,10 +20,10 @@ use Framework\Routing\RouteCollection;
                 'message' => 'I am the One! You found me.',
             ];
         });
-        $routes->notFound(static function () : void {
-            App::response()->setStatus(404)->setJson([
+        $routes->notFound(static function () : array {
+            return [
                 'message' => 'Route not found.',
-            ]);
+            ];
         });
     });
 });
