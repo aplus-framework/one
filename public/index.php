@@ -10,10 +10,23 @@ if (is_file(__DIR__ . '/../vendor/autoload.php')) {
 }
 
 use Framework\Config\Config;
+use Framework\Log\Logger;
 use Framework\MVC\App;
 use Framework\Routing\RouteCollection;
 
-(new App(new Config(null)))->runHttp(static function () : void {
+(new App(new Config([
+    'exceptions' => [
+        'default' => [
+            'logger_instance' => 'default',
+        ],
+    ],
+    'logger' => [
+        'default' => [
+            'directory' => __DIR__ . '/../storage/logs',
+            'level' => Logger::ERROR,
+        ],
+    ],
+])))->runHttp(static function () : void {
     App::router()->serve(null, static function (RouteCollection $routes) : void {
         $routes->get('/', static function () : array {
             return [
