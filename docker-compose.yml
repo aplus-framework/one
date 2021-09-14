@@ -1,9 +1,12 @@
-version: "3"
+version: "3.0"
 services:
-  package:
-    image: registry.gitlab.com/aplus-framework/images/package
-    container_name: package-one
-    working_dir: /package
+  lempa:
+    image: registry.gitlab.com/aplus-framework/images/lempa
+    container_name: lempa-one
+    working_dir: /var/www/aplus
     volumes:
-      - .:/package
+      - .:/var/www/aplus
+    network_mode: host
+    environment:
+      - APLUS_PRELOAD=false
     tty: true
