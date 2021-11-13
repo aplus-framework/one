@@ -1,6 +1,9 @@
 One
 ===
 
+.. image:: image.png
+    :alt: Aplus Framework One Project
+
 Aplus Framework One Project.
 
 - `Installation`_
