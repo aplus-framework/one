@@ -1,14 +1,27 @@
 {
     "name": "aplus/one",
-    "type": "project",
     "description": "Aplus Framework One Project",
+    "license": "MIT",
+    "type": "project",
     "keywords": [
         "one",
         "micro",
         "microservice"
     ],
-    "homepage": "https://docs.aplus-framework.com/guides/projects/one/",
-    "license": "MIT",
+    "homepage": "https://aplus-framework.com/packages/one",
+    "support": {
+        "email": "support@aplus-framework.com",
+        "issues": "https://gitlab.com/aplus-framework/projects/one/issues",
+        "forum": "https://aplus-framework.com/forum",
+        "source": "https://gitlab.com/aplus-framework/projects/one",
+        "docs": "https://docs.aplus-framework.com/guides/projects/one/"
+    },
+    "funding": [
+        {
+            "type": "Aplus Sponsor",
+            "url": "https://aplus-framework.com/sponsor"
+        }
+    ],
     "require": {
         "php": ">=8.0",
         "aplus/framework": "dev-master"
@@ -23,23 +36,16 @@
         "phpstan/phpstan": "^0.12",
         "phpunit/phpunit": "^9.5"
     },
-    "config": {
-        "optimize-autoloader": true,
-        "preferred-install": "dist",
-        "sort-packages": true
-    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload-dev": {
         "psr-4": {
             "Tests\\One\\": "tests/"
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "support": {
-        "email": "support@aplus-framework.com",
-        "issues": "https://gitlab.com/aplus-framework/projects/one/issues",
-        "wiki": "https://gitlab.com/aplus-framework/projects/one/wikis/home",
-        "source": "https://gitlab.com/aplus-framework/projects/one",
-        "docs": "https://docs.aplus-framework.com/guides/projects/one/"
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
     }
 }
