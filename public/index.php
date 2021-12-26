@@ -35,10 +35,8 @@ use Framework\Routing\RouteCollection;
                 'message' => 'I am the One! You found me.',
             ];
         });
-        $routes->notFound(static function () : array {
-            return [
-                'message' => 'Route not found.',
-            ];
-        });
+        $routes->notFound(static fn () : array => [
+            'message' => 'Route not found.',
+        ]);
     });
 });
