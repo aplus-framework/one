@@ -16,9 +16,10 @@ use Framework\Log\Logger;
 use Framework\MVC\App;
 use Framework\Routing\RouteCollection;
 
-(new App(new Config([
+$app = new App(new Config([
     'exceptions' => [
         'default' => [
+            'initialize' => true,
             'logger_instance' => 'default',
         ],
     ],
@@ -28,15 +29,15 @@ use Framework\Routing\RouteCollection;
             'level' => Logger::ERROR,
         ],
     ],
-])))->runHttp(static function () : void {
-    App::router()->serve(null, static function (RouteCollection $routes) : void {
-        $routes->get('/', static function () : array {
-            return [
-                'message' => 'I am the One! You found me.',
-            ];
-        });
-        $routes->notFound(static fn () : array => [
-            'message' => 'Route not found.',
-        ]);
+]));
+App::router()->serve(null, static function (RouteCollection $routes) : void {
+    $routes->get('/', static function () : array {
+        return [
+            'message' => 'I am the One! You found me.',
+        ];
     });
+    $routes->notFound(static fn () : array => [
+        'message' => 'Route not found.',
+    ]);
 });
+$app->runHttp();
