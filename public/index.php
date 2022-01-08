@@ -11,12 +11,11 @@ if (class_exists(Composer\Autoload\ClassLoader::class, false) === false
     require __DIR__ . '/../vendor/autoload.php';
 }
 
-use Framework\Config\Config;
 use Framework\Log\Logger;
 use Framework\MVC\App;
 use Framework\Routing\RouteCollection;
 
-$app = new App(new Config([
+$app = new App([
     'exceptions' => [
         'default' => [
             'initialize' => true,
@@ -29,7 +28,7 @@ $app = new App(new Config([
             'level' => Logger::ERROR,
         ],
     ],
-]));
+]);
 App::router()->serve(null, static function (RouteCollection $routes) : void {
     $routes->get('/', static function () : array {
         return [
