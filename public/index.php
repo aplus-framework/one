@@ -16,7 +16,7 @@ use Framework\MVC\App;
 use Framework\Routing\RouteCollection;
 
 $app = new App([
-    'exceptions' => [
+    'exceptionHandler' => [
         'default' => [
             'initialize' => true,
             'logger_instance' => 'default',
