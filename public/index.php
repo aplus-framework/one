@@ -11,6 +11,7 @@ if (class_exists(Composer\Autoload\ClassLoader::class, false) === false
     require __DIR__ . '/../vendor/autoload.php';
 }
 
+use Framework\Debug\ExceptionHandler;
 use Framework\Log\LogLevel;
 use Framework\MVC\App;
 use Framework\Routing\RouteCollection;
@@ -18,6 +19,7 @@ use Framework\Routing\RouteCollection;
 $app = new App([
     'exceptionHandler' => [
         'default' => [
+            'environment' => $_SERVER['ENVIRONMENT'] ?? ExceptionHandler::PRODUCTION,
             'initialize' => true,
             'logger_instance' => 'default',
         ],
