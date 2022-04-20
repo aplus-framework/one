@@ -11,7 +11,7 @@ if (class_exists(Composer\Autoload\ClassLoader::class, false) === false
     require __DIR__ . '/../vendor/autoload.php';
 }
 
-use Framework\Log\Logger;
+use Framework\Log\LogLevel;
 use Framework\MVC\App;
 use Framework\Routing\RouteCollection;
 
@@ -24,8 +24,8 @@ $app = new App([
     ],
     'logger' => [
         'default' => [
-            'directory' => __DIR__ . '/../storage/logs',
-            'level' => Logger::ERROR,
+            'destination' => __DIR__ . '/../storage/logs',
+            'level' => LogLevel::ERROR,
         ],
     ],
 ]);

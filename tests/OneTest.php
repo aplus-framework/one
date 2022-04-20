@@ -24,7 +24,7 @@ final class OneTest extends TestCase
         $configs = App::config()->get('exceptionHandler');
         self::assertArrayHasKey('logger_instance', $configs);
         $configs = App::config()->get('logger');
-        self::assertArrayHasKey('directory', $configs);
+        self::assertArrayHasKey('destination', $configs);
         self::assertArrayHasKey('level', $configs);
     }
 
