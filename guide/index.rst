@@ -20,13 +20,13 @@ The installation of this project can be done with Composer:
 
 .. code-block::
 
-    composer create-project aplus/one:dev-master
+    composer create-project aplus/one
 
-or with the `Aplus Command Line Tool <https://docs.aplus-framework.com/guides/aplus/index.html>`_:
+Or, to install the latest `LTS <https://aplus-framework.com/lts>`_ version:
 
 .. code-block::
 
-    aplus new-one
+    composer create-project aplus/one:^22
 
 Structure
 ---------
