@@ -11,6 +11,7 @@ Aplus Framework One Project.
 - `Configuration`_
 - `Routing`_
 - `Running`_
+- `Deployment`_
 - `Conclusion`_
 
 Installation
@@ -83,6 +84,12 @@ the index.php file:
 
 If the application also responds from the command line, it is possible to use
 the ``run`` method and, if it is only for the command line; ``runCli``.
+
+Deployment
+----------
+
+The instructions for deployment are the same as for
+`App Project <https://docs.aplus-framework.com/guides/projects/app/index.html#deployment>`_.
 
 Conclusion
 ----------
