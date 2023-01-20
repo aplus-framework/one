@@ -59,29 +59,29 @@ jobs:
           composer global require php-coveralls/php-coveralls
           php-coveralls --coverage_clover=build/logs/clover.xml -v
 
-tests-last:
-  runs-on: ubuntu-20.04
-  timeout-minutes: 30
+  tests-last:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 30
 
-  strategy:
-    fail-fast: true
+    strategy:
+      fail-fast: true
 
-  name: PHP 8.2 - Last
+    name: PHP 8.2 - Last
 
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: 8.2
-        tools: composer
-        coverage: xdebug
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          tools: composer
+          coverage: xdebug
 
-    - name: Install dependencies
-      run:
-        composer update
+      - name: Install dependencies
+        run:
+          composer update
 
-    - name: PHPUnit
-      run: vendor/bin/phpunit --verbose
+      - name: PHPUnit
+        run: vendor/bin/phpunit --verbose
