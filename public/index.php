@@ -32,6 +32,11 @@ define('ENVIRONMENT', $_SERVER['ENVIRONMENT'] ?? 'production');
             'level' => LogLevel::ERROR,
         ],
     ],
+    'response' => [
+        'default' => [
+            'auto_etag' => true,
+        ],
+    ],
     'router' => [
         'default' => [
             'callback' => static function (Router $router) : void {
