@@ -11,16 +11,17 @@ if (class_exists(Composer\Autoload\ClassLoader::class, false) === false
     require __DIR__ . '/../vendor/autoload.php';
 }
 
-use Framework\Debug\ExceptionHandler;
 use Framework\Log\LogLevel;
 use Framework\MVC\App;
 use Framework\Routing\RouteCollection;
 use Framework\Routing\Router;
 
+define('ENVIRONMENT', $_SERVER['ENVIRONMENT'] ?? 'production');
+
 $app = new App([
     'exceptionHandler' => [
         'default' => [
-            'environment' => $_SERVER['ENVIRONMENT'] ?? ExceptionHandler::PRODUCTION,
+            'environment' => ENVIRONMENT,
             'initialize' => true,
             'logger_instance' => 'default',
         ],
@@ -47,5 +48,5 @@ $app = new App([
             },
         ],
     ],
-]);
+], ENVIRONMENT === 'development');
 $app->runHttp();
