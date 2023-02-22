@@ -39,6 +39,8 @@ define('ENVIRONMENT', $_SERVER['ENVIRONMENT'] ?? 'production');
     ],
     'router' => [
         'default' => [
+            'auto_methods' => true,
+            'auto_options' => true,
             'callback' => static function (Router $router) : void {
                 $router->serve(null, static function (RouteCollection $routes) : void {
                     $routes->get('/', static function () : array {
