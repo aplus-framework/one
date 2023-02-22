@@ -18,7 +18,7 @@ use Framework\Routing\Router;
 
 define('ENVIRONMENT', $_SERVER['ENVIRONMENT'] ?? 'production');
 
-$app = new App([
+(new App([
     'exceptionHandler' => [
         'default' => [
             'environment' => ENVIRONMENT,
@@ -48,5 +48,4 @@ $app = new App([
             },
         ],
     ],
-], ENVIRONMENT === 'development');
-$app->runHttp();
+], ENVIRONMENT === 'development'))->runHttp();
