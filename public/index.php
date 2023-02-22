@@ -15,6 +15,7 @@ use Framework\Debug\ExceptionHandler;
 use Framework\Log\LogLevel;
 use Framework\MVC\App;
 use Framework\Routing\RouteCollection;
+use Framework\Routing\Router;
 
 $app = new App([
     'exceptionHandler' => [
@@ -30,15 +31,21 @@ $app = new App([
             'level' => LogLevel::ERROR,
         ],
     ],
+    'router' => [
+        'default' => [
+            'callback' => static function (Router $router) : void {
+                $router->serve(null, static function (RouteCollection $routes) : void {
+                    $routes->get('/', static function () : array {
+                        return [
+                            'message' => 'I am the One! You found me.',
+                        ];
+                    });
+                    $routes->notFound(static fn () : array => [
+                        'message' => 'Route not found.',
+                    ]);
+                });
+            },
+        ],
+    ],
 ]);
-App::router()->serve(null, static function (RouteCollection $routes) : void {
-    $routes->get('/', static function () : array {
-        return [
-            'message' => 'I am the One! You found me.',
-        ];
-    });
-    $routes->notFound(static fn () : array => [
-        'message' => 'Route not found.',
-    ]);
-});
 $app->runHttp();
