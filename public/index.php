@@ -32,6 +32,14 @@ define('ENVIRONMENT', $_SERVER['ENVIRONMENT'] ?? 'production');
             'level' => LogLevel::ERROR,
         ],
     ],
+    'request' => [
+        'default' => [
+            'allowed_hosts' => [
+                'localhost:8080',
+            ],
+            'force_https' => ENVIRONMENT !== 'development',
+        ],
+    ],
     'response' => [
         'default' => [
             'auto_etag' => true,

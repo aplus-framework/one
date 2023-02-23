@@ -16,7 +16,7 @@ use Framework\MVC\App;
  */
 final class OneTest extends TestCase
 {
-    protected string $baseUrl = 'http://domain.tld/';
+    protected string $baseUrl = 'https://localhost:8080/';
 
     public function testConfigs() : void
     {
