@@ -30,6 +30,7 @@ final class OneTest extends TestCase
     {
         $response = $this->runOne();
         self::assertSame(200, $response['code']);
+        self::assertArrayHasKey('etag', $response['headers']);
         self::assertStringContainsString('One', $response['body']);
     }
 

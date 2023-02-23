@@ -8,6 +8,7 @@
 namespace Tests\One;
 
 use Framework\HTTP\URL;
+use Framework\MVC\App;
 use JetBrains\PhpStorm\ArrayShape;
 
 /**
@@ -56,11 +57,12 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         }
         \ob_start();
         require __DIR__ . '/../public/index.php';
-        $body = (string) \ob_get_clean();
+        \ob_end_clean();
+        $response = App::response();
         return [
-            'code' => (int) \http_response_code(),
-            'headers' => \headers_list(),
-            'body' => $body,
+            'code' => $response->getStatusCode(),
+            'headers' => $response->getHeaders(),
+            'body' => $response->getBody(),
         ];
     }
 }
