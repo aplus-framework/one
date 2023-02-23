@@ -16,11 +16,9 @@ use Framework\MVC\App;
  */
 final class OneTest extends TestCase
 {
-    protected string $baseUrl = 'https://localhost:8080/';
-
     public function testConfigs() : void
     {
-        $this->runOne($this->baseUrl);
+        $this->runOne();
         $configs = App::config()->get('exceptionHandler');
         self::assertArrayHasKey('logger_instance', $configs);
         $configs = App::config()->get('logger');
@@ -30,14 +28,14 @@ final class OneTest extends TestCase
 
     public function testIndex() : void
     {
-        $response = $this->runOne($this->baseUrl);
+        $response = $this->runOne();
         self::assertSame(200, $response['code']);
         self::assertStringContainsString('One', $response['body']);
     }
 
     public function testNotFound() : void
     {
-        $response = $this->runOne($this->baseUrl . 'wakawaka');
+        $response = $this->runOne('/wakawaka');
         self::assertSame(404, $response['code']);
         self::assertStringContainsString('Route not found', $response['body']);
     }
