@@ -7,6 +7,7 @@
  */
 namespace Tests\One;
 
+use Framework\HTTP\Status;
 use Framework\MVC\App;
 
 /**
@@ -29,7 +30,7 @@ final class OneTest extends TestCase
     public function testIndex() : void
     {
         $response = $this->runOne();
-        self::assertSame(200, $response['code']);
+        self::assertSame(Status::OK, $response['code']);
         self::assertArrayHasKey('etag', $response['headers']);
         self::assertStringContainsString('One', $response['body']);
     }
@@ -37,7 +38,7 @@ final class OneTest extends TestCase
     public function testNotFound() : void
     {
         $response = $this->runOne('/wakawaka');
-        self::assertSame(404, $response['code']);
+        self::assertSame(Status::NOT_FOUND, $response['code']);
         self::assertStringContainsString('Route not found', $response['body']);
     }
 }
