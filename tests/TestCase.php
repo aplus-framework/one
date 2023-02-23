@@ -30,6 +30,9 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         if ( ! $url instanceof URL) {
             $url = new URL($url);
         }
+        if ($url->getScheme() === 'https') {
+            $_SERVER['HTTPS'] = 'on';
+        }
         $_SERVER['SERVER_PROTOCOL'] = 'HTTP/1.1';
         $_SERVER['REQUEST_METHOD'] = $method;
         $_SERVER['REQUEST_URI'] = $url->getPath();
