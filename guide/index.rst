@@ -9,7 +9,6 @@ Aplus Framework One Project.
 - `Installation`_
 - `Structure`_
 - `Configuration`_
-- `Routing`_
 - `Running`_
 - `Deployment`_
 - `Conclusion`_
@@ -60,27 +59,30 @@ Configuration
 -------------
 
 The application's configurations are set directly in the App class constructor,
-where, by default, only two services are set; the **exceptionHandler** and the
+where, by default, five services are set; the **exceptionHandler** and the
 **logger**. Which shows a beautiful page when exceptions are thrown and is also
 able to save logs in the ``storage/logs`` directory.
 
-Routing
--------
+Also, the **request** service is used to allow certain hosts and auto-redirect
+to URLs with HTTPS.
 
-The routing is defined directly in the index.php file, as it is expected not to
-contain too many lines. By default, only the route with the root path of the URL
-is set, and also a customization in the Error 404 page. Both return a closure
-with an array to be JSON-encoded.
+The **response** service is defined so that the application works with the
+browser using cache through the
+`ETag <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag>`_ header.
+
+And the routing is defined directly in the **router** config, as it is expected
+not to contain too many lines. By default, only the route with the root path of
+the URL is set, and also a customization in the Error 404 page. Both return a
+closure with an array to be JSON-encoded.
+
+Information on how to set up services can be found in the
+`MVC library documentation <https://docs.aplus-framework.com/guides/libraries/mvc/index.html#services>`_.
 
 Running
 -------
 
-Finally, the application will respond to HTTP requests. As per the last line of
-the index.php file:
-
-.. code-block:: php
-
-    $app->runHttp();
+Finally, the application will respond to HTTP requests through the ``runHttp``
+method.
 
 If the application also responds from the command line, it is possible to use
 the ``run`` method and, if it is only for the command line; ``runCli``.
