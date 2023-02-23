@@ -7,6 +7,7 @@
  */
 namespace Tests\One;
 
+use Framework\HTTP\Status;
 use Framework\MVC\App;
 
 /**
@@ -16,11 +17,9 @@ use Framework\MVC\App;
  */
 final class OneTest extends TestCase
 {
-    protected string $baseUrl = 'http://domain.tld/';
-
     public function testConfigs() : void
     {
-        $this->runOne($this->baseUrl);
+        $this->runOne();
         $configs = App::config()->get('exceptionHandler');
         self::assertArrayHasKey('logger_instance', $configs);
         $configs = App::config()->get('logger');
@@ -30,15 +29,16 @@ final class OneTest extends TestCase
 
     public function testIndex() : void
     {
-        $response = $this->runOne($this->baseUrl);
-        self::assertSame(200, $response['code']);
+        $response = $this->runOne();
+        self::assertSame(Status::OK, $response['code']);
+        self::assertArrayHasKey('etag', $response['headers']);
         self::assertStringContainsString('One', $response['body']);
     }
 
     public function testNotFound() : void
     {
-        $response = $this->runOne($this->baseUrl . 'wakawaka');
-        self::assertSame(404, $response['code']);
+        $response = $this->runOne('/wakawaka');
+        self::assertSame(Status::NOT_FOUND, $response['code']);
         self::assertStringContainsString('Route not found', $response['body']);
     }
 }

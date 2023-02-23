@@ -11,15 +11,17 @@ if (class_exists(Composer\Autoload\ClassLoader::class, false) === false
     require __DIR__ . '/../vendor/autoload.php';
 }
 
-use Framework\Debug\ExceptionHandler;
 use Framework\Log\LogLevel;
 use Framework\MVC\App;
 use Framework\Routing\RouteCollection;
+use Framework\Routing\Router;
 
-$app = new App([
+define('ENVIRONMENT', $_SERVER['ENVIRONMENT'] ?? 'production');
+
+(new App([
     'exceptionHandler' => [
         'default' => [
-            'environment' => $_SERVER['ENVIRONMENT'] ?? ExceptionHandler::PRODUCTION,
+            'environment' => ENVIRONMENT,
             'initialize' => true,
             'logger_instance' => 'default',
         ],
@@ -30,15 +32,35 @@ $app = new App([
             'level' => LogLevel::ERROR,
         ],
     ],
-]);
-App::router()->serve(null, static function (RouteCollection $routes) : void {
-    $routes->get('/', static function () : array {
-        return [
-            'message' => 'I am the One! You found me.',
-        ];
-    });
-    $routes->notFound(static fn () : array => [
-        'message' => 'Route not found.',
-    ]);
-});
-$app->runHttp();
+    'request' => [
+        'default' => [
+            'allowed_hosts' => [
+                'localhost:8080',
+            ],
+            'force_https' => ENVIRONMENT !== 'development',
+        ],
+    ],
+    'response' => [
+        'default' => [
+            'auto_etag' => true,
+        ],
+    ],
+    'router' => [
+        'default' => [
+            'auto_methods' => true,
+            'auto_options' => true,
+            'callback' => static function (Router $router) : void {
+                $router->serve(null, static function (RouteCollection $routes) : void {
+                    $routes->get('/', static function () : array {
+                        return [
+                            'message' => 'I am the One! You found me.',
+                        ];
+                    });
+                    $routes->notFound(static fn () : array => [
+                        'message' => 'Route not found.',
+                    ]);
+                });
+            },
+        ],
+    ],
+], ENVIRONMENT === 'development'))->runHttp();
