@@ -15,18 +15,30 @@ use JetBrains\PhpStorm\ArrayShape;
  */
 abstract class TestCase extends \PHPUnit\Framework\TestCase
 {
+    protected string $baseUrl = 'https://localhost:8080/';
+
     /**
      * Run the One file.
      *
-     * @param string|URL $url
+     * @param string|URL|null $url
      * @param string $method
      * @param array<string,string> $headers
      *
      * @return array<string,mixed>
      */
     #[ArrayShape(['code' => 'int', 'headers' => 'array', 'body' => 'string'])]
-    protected function runOne(URL | string $url, string $method = 'GET', array $headers = []) : array
-    {
+    protected function runOne(
+        URL | string $url = null,
+        string $method = 'GET',
+        array $headers = []
+    ) : array {
+        $this->baseUrl = \rtrim($this->baseUrl, '/') . '/';
+        if ($url === null) {
+            $url = $this->baseUrl;
+        }
+        if (\is_string($url) && \str_starts_with($url, '/')) {
+            $url = $this->baseUrl . \ltrim($url, '/');
+        }
         if ( ! $url instanceof URL) {
             $url = new URL($url);
         }
