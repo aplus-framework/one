@@ -11,9 +11,9 @@
     "homepage": "https://aplus-framework.com/packages/one",
     "support": {
         "email": "support@aplus-framework.com",
-        "issues": "https://gitlab.com/aplus-framework/projects/one/issues",
+        "issues": "https://github.com/aplus-framework/one/issues",
         "forum": "https://aplus-framework.com/forum",
-        "source": "https://gitlab.com/aplus-framework/projects/one",
+        "source": "https://github.com/aplus-framework/one",
         "docs": "https://docs.aplus-framework.com/guides/projects/one/"
     },
     "funding": [
