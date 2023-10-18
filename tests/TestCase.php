@@ -40,7 +40,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
         if (\is_string($url) && \str_starts_with($url, '/')) {
             $url = $this->baseUrl . \ltrim($url, '/');
         }
-        if ( ! $url instanceof URL) {
+        if (!$url instanceof URL) {
             $url = new URL($url);
         }
         if ($url->getScheme() === 'https') {
