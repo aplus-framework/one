@@ -27,7 +27,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     #[ArrayShape(['code' => 'int', 'headers' => 'array', 'body' => 'string'])]
     protected function runOne(URL | string $url, string $method = 'GET', array $headers = []) : array
     {
-        if ( ! $url instanceof URL) {
+        if (!$url instanceof URL) {
             $url = new URL($url);
         }
         $_SERVER['SERVER_PROTOCOL'] = 'HTTP/1.1';
