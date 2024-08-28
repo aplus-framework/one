@@ -18,7 +18,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Run the One file.
      *
-     * @param string|URL $url
+     * @param URL|string $url
      * @param string $method
      * @param array<string,string> $headers
      *
