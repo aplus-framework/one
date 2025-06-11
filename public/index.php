@@ -10,7 +10,11 @@ if (is_file(__DIR__ . '/../vendor/autoload.php')) {
 }
 
 /**
- * The user guide for this project is available at:
+ * -----------------------------------------------------------------------------
+ * The One Project
+ * -----------------------------------------------------------------------------.
+ *
+ * The initial user guide for this project is available at:
  *
  * @see https://docs.aplus-framework.com/guides/projects/one/index.html
  */
@@ -23,7 +27,11 @@ define('ENVIRONMENT', $_SERVER['ENVIRONMENT'] ?? 'production');
 define('IS_DEV', ENVIRONMENT === 'development');
 
 /**
- * For details on how to set configs visit:
+ * -----------------------------------------------------------------------------
+ * Initialize the App
+ * -----------------------------------------------------------------------------.
+ *
+ * For details on how to set service configs visit:
  *
  * @see https://docs.aplus-framework.com/guides/libraries/mvc/index.html#services
  */
@@ -43,7 +51,11 @@ $app = new App([
 ], IS_DEV);
 
 /**
- * For details on how to add routes visit:
+ * -----------------------------------------------------------------------------
+ * Serve Routes
+ * -----------------------------------------------------------------------------.
+ *
+ * For details on how to serve routes visit:
  *
  * @see https://docs.aplus-framework.com/guides/libraries/routing/index.html#route-collection
  */
@@ -62,6 +74,10 @@ App::router()->serve(null, static function (RouteCollection $routes) : void {
 });
 
 /**
+ * -----------------------------------------------------------------------------
+ * Running!
+ * -----------------------------------------------------------------------------.
+ *
  * For details on how to run the app visit:
  *
  * @see https://docs.aplus-framework.com/guides/libraries/mvc/index.html#running
