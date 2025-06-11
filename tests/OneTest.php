@@ -40,6 +40,7 @@ final class OneTest extends TestCase
         $response = $this->runOne($this->baseUrl . 'about');
         self::assertSame(200, $response['code']);
         self::assertStringContainsString('<strong>me</strong>', $response['body']);
+        self::assertSame('about', App::router()->getMatchedRoute()->getName());
     }
 
     public function testNotFound() : void
