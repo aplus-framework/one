@@ -20,7 +20,6 @@ $app = new App([
     'exceptionHandler' => [
         'default' => [
             'environment' => ENVIRONMENT,
-            'initialize' => true,
             'logger_instance' => 'default',
         ],
     ],
