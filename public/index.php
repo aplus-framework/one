@@ -36,6 +36,9 @@ App::router()->serve(null, static function (RouteCollection $routes) : void {
             'message' => 'I am the One! You found me.',
         ];
     });
+    $routes->get('/about', static function () : string {
+        return 'Do you want to know about me?';
+    });
     $routes->notFound(static fn () : array => [
         'message' => 'Route not found.',
     ]);

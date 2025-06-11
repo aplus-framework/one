@@ -35,6 +35,13 @@ final class OneTest extends TestCase
         self::assertStringContainsString('One', $response['body']);
     }
 
+    public function testAbout() : void
+    {
+        $response = $this->runOne($this->baseUrl . 'about');
+        self::assertSame(200, $response['code']);
+        self::assertStringContainsString('about me', $response['body']);
+    }
+
     public function testNotFound() : void
     {
         $response = $this->runOne($this->baseUrl . 'wakawaka');
