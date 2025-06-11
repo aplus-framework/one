@@ -8,12 +8,12 @@
 namespace Tests\One;
 
 use Framework\MVC\App;
+use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
 
 /**
  * Class OneTest.
- *
- * @runTestsInSeparateProcesses
  */
+#[RunTestsInSeparateProcesses]
 final class OneTest extends TestCase
 {
     protected string $baseUrl = 'http://domain.tld/';
