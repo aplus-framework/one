@@ -14,10 +14,13 @@ use Framework\Log\LogLevel;
 use Framework\MVC\App;
 use Framework\Routing\RouteCollection;
 
+define('ENVIRONMENT', $_SERVER['ENVIRONMENT'] ?? 'production');
+define('IS_DEV', ENVIRONMENT === 'development');
+
 $app = new App([
     'exceptionHandler' => [
         'default' => [
-            'environment' => $_SERVER['ENVIRONMENT'] ?? ExceptionHandler::PRODUCTION,
+            'environment' => ENVIRONMENT,
             'initialize' => true,
             'logger_instance' => 'default',
         ],
@@ -28,7 +31,7 @@ $app = new App([
             'level' => LogLevel::ERROR,
         ],
     ],
-]);
+], IS_DEV);
 App::router()->serve(null, static function (RouteCollection $routes) : void {
     $routes->get('/', static function () : array {
         return [
