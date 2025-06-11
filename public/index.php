@@ -9,6 +9,12 @@ if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require __DIR__ . '/../vendor/autoload.php';
 }
 
+/**
+ * The user guide for this project is available at:
+ *
+ * @see https://docs.aplus-framework.com/guides/projects/one/index.html
+ */
+
 use Framework\Log\LogLevel;
 use Framework\MVC\App;
 use Framework\Routing\RouteCollection;
@@ -16,6 +22,11 @@ use Framework\Routing\RouteCollection;
 define('ENVIRONMENT', $_SERVER['ENVIRONMENT'] ?? 'production');
 define('IS_DEV', ENVIRONMENT === 'development');
 
+/**
+ * For details on how to set configs visit:
+ *
+ * @see https://docs.aplus-framework.com/guides/libraries/mvc/index.html#services
+ */
 $app = new App([
     'exceptionHandler' => [
         'default' => [
@@ -30,6 +41,12 @@ $app = new App([
         ],
     ],
 ], IS_DEV);
+
+/**
+ * For details on how to add routes visit:
+ *
+ * @see https://docs.aplus-framework.com/guides/libraries/routing/index.html#route-collection
+ */
 App::router()->serve(null, static function (RouteCollection $routes) : void {
     $routes->get('/', static function () : array {
         return [
@@ -43,4 +60,10 @@ App::router()->serve(null, static function (RouteCollection $routes) : void {
         'message' => 'Route not found.',
     ]);
 });
+
+/**
+ * For details on how to run the app visit:
+ *
+ * @see https://docs.aplus-framework.com/guides/libraries/mvc/index.html#running
+ */
 $app->runHttp();
