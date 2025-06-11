@@ -23,12 +23,6 @@ The installation of this project can be done with Composer:
 
     composer create-project aplus/one
 
-Or, to install the latest `LTS <https://aplus-framework.com/lts>`_ version:
-
-.. code-block::
-
-    composer create-project aplus/one:^22
-
 Structure
 ---------
 
