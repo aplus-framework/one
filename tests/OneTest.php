@@ -39,7 +39,7 @@ final class OneTest extends TestCase
     {
         $response = $this->runOne($this->baseUrl . 'about');
         self::assertSame(200, $response['code']);
-        self::assertStringContainsString('about me', $response['body']);
+        self::assertStringContainsString('<strong>me</strong>', $response['body']);
     }
 
     public function testNotFound() : void
