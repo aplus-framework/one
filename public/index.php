@@ -9,7 +9,6 @@ if (is_file(__DIR__ . '/../vendor/autoload.php')) {
     require __DIR__ . '/../vendor/autoload.php';
 }
 
-use Framework\Debug\ExceptionHandler;
 use Framework\Log\LogLevel;
 use Framework\MVC\App;
 use Framework\Routing\RouteCollection;
